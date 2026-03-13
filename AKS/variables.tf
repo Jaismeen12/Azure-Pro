@@ -1,7 +1,7 @@
 variable "resource_group_name" {
   description = "Resource group name to create/use for this deployment"
   type        = string
-  default     = "rg-aks-demo"
+  default     = "rg-Jk-demo"
 }
 
 variable "location" {
@@ -67,12 +67,12 @@ variable "node_pool_name" {
 
 variable "node_count" {
   type    = number
-  default = 3
+  default = 1
 }
 
 variable "node_vm_size" {
   type    = string
-  default = "Standard_DS2_v2"
+  default = "Standard_D4s_v3"
 }
 
 variable "os_disk_size_gb" {
