@@ -1,7 +1,7 @@
 variable "resource_group_name" {
   description = "Name of the Resource Group"
   type        = string
-  default     = "rg-aks-proj2-dev"
+  default     = "rg-aks-proj2-dev2"
 }
 
 variable "location" {
@@ -13,7 +13,7 @@ variable "location" {
 variable "vnet_name" {
   description = "Name of the Virtual Network"
   type        = string
-  default     = "vnet-aks-proj2-dev"
+  default     = "vnet-aks-proj2-dev2"
 }
 
 variable "vnet_address_space" {
@@ -25,7 +25,7 @@ variable "vnet_address_space" {
 variable "subnet_name" {
   description = "Name of the Subnet"
   type        = string
-  default     = "subnet-aks-proj2-dev"
+  default     = "subnet-aks-proj2-dev2"
 }
 
 variable "subnet_address_prefix" {
@@ -37,19 +37,19 @@ variable "subnet_address_prefix" {
 variable "log_analytics_workspace_name" {
   description = "Name of the Log Analytics Workspace"
   type        = string
-  default     = "log-analytics-aks-proj2-dev"
+  default     = "log-analytics-aks-proj2-dev2"
 }
 
 variable "aks_cluster_name" {
   description = "Name of the AKS cluster"
   type        = string
-  default     = "aks-cluster-proj2-dev"
+  default     = "aks-cluster-proj2-dev2"
 }
 
 variable "dns_prefix" {
   description = "DNS prefix for AKS"
   type        = string
-  default     = "aksproj2"
+  default     = "aksproj2dev2"
 }
 
 variable "node_count" {
@@ -61,12 +61,11 @@ variable "node_count" {
 variable "vm_size" {
   description = "VM size for AKS node pool"
   type        = string
-  default     = "Standard_DS2_v2"
+  default     = ""
 }
 
 variable "environment" {
   description = "Environment tag"
   type        = string
-  default     = "dev"
-} 
-
+  default     = "dev2"
+}

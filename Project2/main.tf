@@ -1,24 +1,24 @@
 resource "azurerm_resource_group" "aks_rg" {
-  name     = "rg-aks-proj2-dev"
-  location = "Canada East"
+  name     = var.resource_group_name
+  location = var.location
 }
 
 resource "azurerm_virtual_network" "aks_vnet" {
-  name                = "vnet-aks-proj2-dev"
+  name                = var.vnet_name
   location            = azurerm_resource_group.aks_rg.location
   resource_group_name = azurerm_resource_group.aks_rg.name
-  address_space       = ["10.0.0.0/16"]
+  address_space       = var.vnet_address_space
 }
 
 resource "azurerm_subnet" "aks_subnet" {
-  name                 = "subnet-aks-proj2-dev"
+  name                 = var.subnet_name
   resource_group_name  = azurerm_resource_group.aks_rg.name
   virtual_network_name = azurerm_virtual_network.aks_vnet.name
-  address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = var.subnet_address_prefix
 }
 
 resource "azurerm_log_analytics_workspace" "aks_law" {
-  name                = "log-analytics-aks-proj2-dev"
+  name                = var.log_analytics_workspace_name
   location            = azurerm_resource_group.aks_rg.location
   resource_group_name = azurerm_resource_group.aks_rg.name
   sku                 = "PerGB2018"
@@ -26,15 +26,15 @@ resource "azurerm_log_analytics_workspace" "aks_law" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
-  name                = "aks-cluster-proj2-dev"
+  name                = var.aks_cluster_name
   location            = azurerm_resource_group.aks_rg.location
   resource_group_name = azurerm_resource_group.aks_rg.name
-  dns_prefix          = "aksproj2"
+  dns_prefix          = var.dns_prefix
 
   default_node_pool {
     name           = "systemnp"
-    node_count     = 2
-    vm_size        = "Standard_DS2_v2"
+    node_count     = var.node_count
+    vm_size        = var.vm_size
     vnet_subnet_id = azurerm_subnet.aks_subnet.id
   }
 
@@ -53,7 +53,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 
   tags = {
-    environment = "dev"
+    environment = var.environment
     project     = "Project2-AKS-DevOps"
   }
 }

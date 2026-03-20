@@ -1,5 +1,5 @@
 trigger:
-- main
+- none
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -10,12 +10,10 @@ steps:
   inputs:
     terraformVersion: 'latest'
 
-- task: TerraformTaskV4@4
+- script: |
+    terraform init -backend=false
   displayName: 'Terraform Init'
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/Project2'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/Project2'
 
 - task: TerraformTaskV4@4
   displayName: 'Terraform Validate'
