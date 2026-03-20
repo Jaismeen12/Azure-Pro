@@ -1,0 +1,12 @@
+resource_group_name           = "rg-aks-proj2-dev"
+location                      = "Canada East"
+vnet_name                     = "vnet-aks-proj2-dev"
+vnet_address_space            = ["10.0.0.0/16"]
+subnet_name                   = "subnet-aks-proj2-dev"
+subnet_address_prefix         = ["10.0.1.0/24"]
+log_analytics_workspace_name  = "log-analytics-aks-proj2-dev"
+aks_cluster_name              = "aks-cluster-proj2-dev"
+dns_prefix                    = "aksproj2"
+node_count                    = 2
+vm_size                       = "Standard_DS2_v2"
+environment                   = "dev2" 
