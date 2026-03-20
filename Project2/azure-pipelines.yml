@@ -1,5 +1,5 @@
 trigger:
-- none
+- main
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -29,6 +29,7 @@ steps:
     command: 'plan'
     workingDirectory: '$(System.DefaultWorkingDirectory)/Project2'
     environmentServiceNameAzureRM: 'Azure-Service-Connection'
+    commandOptions: '-var-file="terraform.tfvars"'
 
 - task: TerraformTaskV4@4
   displayName: 'Terraform Apply'
@@ -37,3 +38,4 @@ steps:
     command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/Project2'
     environmentServiceNameAzureRM: 'Azure-Service-Connection'
+    commandOptions: '-auto-approve -var-file="terraform.tfvars"' 
